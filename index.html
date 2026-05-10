@@ -40,13 +40,11 @@
   .hero-name { font-family:var(--ff-display); font-size:clamp(4rem,7vw,7rem); font-weight:900; line-height:0.9; letter-spacing:-0.02em; color:var(--text); margin-bottom:1rem; }
   .hero-name em { font-style:italic; color:var(--accent); }
   .hero-subtitle { font-family:var(--ff-body); font-size:1rem; color:var(--muted); max-width:420px; line-height:1.7; margin-bottom:3rem; }
-  
   .hero-cta { display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; }
   .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#080808; font-family:var(--ff-mono); font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; padding:16px 32px; transition:all 0.3s ease; }
   .btn-primary:hover { transform:translateY(-3px); background:var(--accent2); box-shadow: 0 10px 20px rgba(200, 241, 53, 0.2); }
   .btn-outline { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--border); color:var(--text); font-family:var(--ff-mono); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; padding:16px 32px; transition:all 0.3s ease; }
   .btn-outline:hover { border-color:var(--text); background: rgba(255,255,255,0.05); transform:translateY(-3px); }
-
   .hero-right { position:relative; overflow:hidden; background:#111; }
   .hero-photo { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:grayscale(15%) contrast(1.05); opacity:0.88; }
   .hero-photo-overlay { position:absolute; inset:0; background:linear-gradient(to right,var(--bg) 0%,transparent 30%),linear-gradient(to top,var(--bg) 0%,transparent 20%); }
@@ -58,10 +56,35 @@
 
   section { position:relative; }
   .section-inner { padding:8rem 4vw; max-width:1400px; margin:0 auto; }
+
+  /* ── Section header with ghost number ── */
+  .section-header {
+    position: relative;
+    display: inline-block; /* shrink-wrap so number aligns to title width */
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
   .section-label { font-family:var(--ff-mono); font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:12px; }
   .section-label::before { content:attr(data-num); color:var(--muted); font-size:10px; }
-  .section-title { font-family:var(--ff-display); font-size:clamp(2.5rem,5vw,5rem); font-weight:700; line-height:1.05; letter-spacing:-0.02em; color:var(--text); margin-bottom:0.5rem; }
+  .section-title { font-family:var(--ff-display); font-size:clamp(2.5rem,5vw,5rem); font-weight:700; line-height:1.05; letter-spacing:-0.02em; color:var(--text); position: relative; z-index: 1; }
   .section-title em { font-style:italic; color:var(--accent); }
+
+  /* Ghost number — absolutely positioned top-right of .section-header */
+  .section-num {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-60%);
+    font-family: var(--ff-display);
+    font-size: clamp(6rem, 12vw, 14rem);
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,241,53,0.18);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
 
   #about { border-top:1px solid var(--border); }
   .about-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:6rem; align-items:start; margin-top:5rem; }
@@ -79,7 +102,6 @@
 
   #projects { border-top:1px solid var(--border); }
   .projects-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:5rem; flex-wrap:wrap; gap:2rem; }
-  .projects-count { font-family:var(--ff-display); font-size:5rem; font-weight:900; color:transparent; -webkit-text-stroke:1px rgba(200,241,53,0.2); line-height:1; }
   .project-list { display:flex; flex-direction:column; }
   .project-item { display:grid; grid-template-columns:80px 1fr auto; align-items:center; gap:2rem; padding:2.5rem 0; border-bottom:1px solid var(--border); cursor:pointer; transition:padding-left 0.3s ease; position:relative; overflow:hidden; }
   .project-item::before { content:''; position:absolute; left:0; top:0; bottom:0; width:0; background:rgba(200,241,53,0.03); transition:width 0.4s ease; }
@@ -139,6 +161,7 @@
     .project-item { grid-template-columns:50px 1fr; }
     .project-tags { display:none; }
     nav .nav-links { display:none; }
+    .section-num { font-size: clamp(4rem, 20vw, 8rem); }
   }
   @media (max-width:600px) {
     .section-inner { padding:5rem 6vw; }
@@ -185,11 +208,14 @@
   <div class="hero-scroll-hint">Scroll</div>
 </section>
 
+<!-- ═══ ABOUT ═══ -->
 <section id="about">
   <div class="section-inner">
-   <div class="projects-count reveal">02</div>
-    <div class="section-label" data-num="02">About</div>
-    <h2 class="section-title">The <em>mind</em><br>behind the code</h2>
+    <div class="section-header reveal">
+      <div class="section-label" data-num="02">About</div>
+      <h2 class="section-title">The <em>mind</em><br>behind the code</h2>
+      <span class="section-num" aria-hidden="true">02</span>
+    </div>
     <div class="about-grid">
       <div class="about-left reveal">
         <blockquote class="about-quote">"Fast learner. Analytical thinker. Builder of things that matter."</blockquote>
@@ -222,16 +248,15 @@
   </div>
 </section>
 
+<!-- ═══ PROJECTS ═══ -->
 <section id="projects">
   <div class="section-inner">
-    <div class="projects-header">
-      <div>
-        <div class="section-label" data-num="03">Work</div>
-        <h2 class="section-title">Selected <em>projects</em></h2>
-      </div>
-      <div class="projects-count reveal">03</div>
+    <div class="section-header reveal">
+      <div class="section-label" data-num="03">Work</div>
+      <h2 class="section-title">Selected <em>projects</em></h2>
+      <span class="section-num" aria-hidden="true">03</span>
     </div>
-    <div class="project-list">
+    <div class="project-list" style="margin-top:3rem;">
       <div class="project-item reveal">
         <span class="project-num">001</span>
         <div class="project-info">
@@ -276,12 +301,15 @@
   </div>
 </section>
 
+<!-- ═══ CERTS ═══ -->
 <section id="certs">
   <div class="section-inner">
-    <div class="section-label" data-num="04">Credentials</div>
-    <h2 class="section-title">Certifications &amp;<br><em>training</em></h2>
-    <div class="projects-count reveal">04</div>
-    <div class="cert-grid">
+    <div class="section-header reveal">
+      <div class="section-label" data-num="04">Credentials</div>
+      <h2 class="section-title">Certifications &amp;<br><em>training</em></h2>
+      <span class="section-num" aria-hidden="true">04</span>
+    </div>
+    <div class="cert-grid" style="margin-top:4rem;">
       <div class="cert-card reveal">
         <div class="cert-icon">◈</div>
         <div class="cert-name">Machine Learning Track</div>
@@ -301,11 +329,14 @@
   </div>
 </section>
 
+<!-- ═══ SKILLS ═══ -->
 <section id="skills">
   <div class="section-inner">
-    <div class="section-label" data-num="05">Stack</div>
-    <h2 class="section-title">Technical <em>skills</em></h2>
-    <div class="projects-count reveal">05</div>
+    <div class="section-header reveal">
+      <div class="section-label" data-num="05">Stack</div>
+      <h2 class="section-title">Technical <em>skills</em></h2>
+      <span class="section-num" aria-hidden="true">05</span>
+    </div>
     <div class="skills-split">
       <div>
         <div class="skill-category reveal">
@@ -342,13 +373,15 @@
   </div>
 </section>
 
+<!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-label" data-num="06">Contact</div>
-      <div class="projects-count reveal">06</div>
-    <p class="reveal" style="font-family:var(--ff-mono);font-size:12px;letter-spacing:0.1em;color:var(--text);margin-bottom:0.5rem;opacity:0.8;">Let's build something together</p>
-    <div class="contact-big reveal">Let's<br><em>talk.</em></div>
-    <div class="contact-links reveal reveal-delay-1">
+    <div class="section-header reveal">
+      <div class="section-label" data-num="06">Contact</div>
+      <h2 class="section-title" style="font-size:clamp(2.5rem,5vw,5rem);">Let's<br><em>talk.</em></h2>
+      <span class="section-num" aria-hidden="true">06</span>
+    </div>
+    <div class="contact-links reveal reveal-delay-1" style="margin-top:3rem;">
       <a href="mailto:mostafamoghawry22@gmail.com" class="contact-link">
         <i class="fas fa-envelope contact-icon"></i> mostafamoghawry22@gmail.com
       </a>
