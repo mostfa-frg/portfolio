@@ -128,11 +128,10 @@
   #skills { border-top:1px solid var(--border); }
   .skills-split { display:grid; grid-template-columns:1fr 1fr; gap:6rem; margin-top:5rem; }
   .skill-category { margin-bottom:2.5rem; }
-  .skill-cat-label { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
-  .skill-bar-row { display:flex; align-items:center; gap:1rem; margin-bottom:12px; }
-  .skill-bar-name { font-size:13px; color:var(--text); min-width:130px; }
-  .skill-bar-track { flex:1; height:2px; background:var(--border); }
-  .skill-bar-fill { height:100%; background:var(--accent); transform-origin:left; transform:scaleX(0); transition:transform 1s cubic-bezier(0.16,1,0.3,1); }
+  .skill-cat-label { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; padding-bottom:0.6rem; border-bottom:1px solid var(--border); }
+  .skill-pills { display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-tag { background:var(--bg3); border:1px solid var(--border); color:var(--text); font-family:var(--ff-mono); font-size:12px; padding:7px 16px; letter-spacing:0.05em; transition:border-color 0.2s,color 0.2s,background 0.2s; }
+  .skill-tag:hover { border-color:var(--accent); color:var(--accent); background:rgba(200,241,53,0.05); }
 
   #contact { border-top:1px solid var(--border); }
   .contact-big { font-family:var(--ff-display); font-size:clamp(3rem,8vw,9rem); font-weight:900; line-height:0.9; letter-spacing:-0.03em; color:var(--text); margin:3rem 0; }
@@ -257,17 +256,17 @@
       <span class="section-num" aria-hidden="true">03</span>
     </div>
     <div class="project-list" style="margin-top:3rem;">
-      <div class="project-item reveal">
+      <a href="https://github.com/mostfa-frg/eye-open-or-close" target="_blank" rel="noopener" class="project-item reveal" style="text-decoration:none;">
         <span class="project-num">001</span>
         <div class="project-info">
-          <div class="project-title">Face Mask Classifier</div>
-          <div class="project-desc">Real-time face detection with CNN-based mask classification via webcam</div>
+          <div class="project-title">Eye Open / Closed Detector</div>
+          <div class="project-desc">CNN trained on grayscale eye images to classify open vs closed — deployed as a Streamlit web app</div>
         </div>
         <div class="project-tags">
-          <span class="tag hl">Computer Vision</span><span class="tag">CNN</span><span class="tag">OpenCV</span><span class="tag">Python</span>
+          <span class="tag hl">Computer Vision</span><span class="tag">CNN</span><span class="tag">OpenCV</span><span class="tag">Streamlit</span>
         </div>
-      </div>
-      <div class="project-item reveal reveal-delay-1">
+      </a>
+      <a href="https://github.com/mostfa-frg/F1-Top10-pred" target="_blank" rel="noopener" class="project-item reveal reveal-delay-1" style="text-decoration:none;">
         <span class="project-num">002</span>
         <div class="project-info">
           <div class="project-title">F1 Top 10 Predictor</div>
@@ -276,8 +275,8 @@
         <div class="project-tags">
           <span class="tag hl">Classification</span><span class="tag">XGBoost</span><span class="tag">Random Forest</span><span class="tag">EDA</span>
         </div>
-      </div>
-      <div class="project-item reveal reveal-delay-2">
+      </a>
+      <a href="https://github.com/mostfa-frg/laptop-price-pred" target="_blank" rel="noopener" class="project-item reveal reveal-delay-2" style="text-decoration:none;">
         <span class="project-num">003</span>
         <div class="project-info">
           <div class="project-title">Laptop Price Predictor</div>
@@ -286,8 +285,8 @@
         <div class="project-tags">
           <span class="tag hl">Live App</span><span class="tag">Streamlit</span><span class="tag">XGBoost</span><span class="tag">MLOps</span>
         </div>
-      </div>
-      <div class="project-item reveal reveal-delay-3">
+      </a>
+      <a href="https://github.com/mostfa-frg/Fake-News-Detector" target="_blank" rel="noopener" class="project-item reveal reveal-delay-3" style="text-decoration:none;">
         <span class="project-num">004</span>
         <div class="project-info">
           <div class="project-title">Fake / Real News Classifier</div>
@@ -296,7 +295,7 @@
         <div class="project-tags">
           <span class="tag hl">NLP</span><span class="tag">Neural Network</span><span class="tag">TF-IDF</span><span class="tag">Keras</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -341,32 +340,48 @@
       <div>
         <div class="skill-category reveal">
           <div class="skill-cat-label">Machine Learning</div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Scikit-learn</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.95"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">XGBoost</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.88"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">TensorFlow / Keras</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.82"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">LightGBM</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.78"></div></div></div>
+          <div class="skill-pills">
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">XGBoost</span>
+            <span class="skill-tag">LightGBM</span>
+            <span class="skill-tag">CatBoost</span>
+            <span class="skill-tag">TensorFlow / Keras</span>
+            <span class="skill-tag">Neural Networks</span>
+            <span class="skill-tag">CNNs</span>
+          </div>
         </div>
         <div class="skill-category reveal reveal-delay-1">
           <div class="skill-cat-label">Data &amp; Analysis</div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Pandas / NumPy</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.92"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Matplotlib / Seaborn</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.85"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Feature Engineering</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.80"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">TF-IDF / NLP</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.75"></div></div></div>
+          <div class="skill-pills">
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Seaborn</span>
+            <span class="skill-tag">Feature Engineering</span>
+            <span class="skill-tag">TF-IDF / NLP</span>
+            <span class="skill-tag">EDA</span>
+          </div>
         </div>
       </div>
       <div>
         <div class="skill-category reveal reveal-delay-2">
           <div class="skill-cat-label">Languages</div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.94"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">C++</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.75"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">SQL</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.72"></div></div></div>
+          <div class="skill-pills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">SQL</span>
+          </div>
         </div>
         <div class="skill-category reveal reveal-delay-3">
           <div class="skill-cat-label">Deployment &amp; Tools</div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Streamlit</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.88"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">Git &amp; GitHub</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.85"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">FastAPI</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.65"></div></div></div>
-          <div class="skill-bar-row"><span class="skill-bar-name">OpenCV</span><div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.76"></div></div></div>
+          <div class="skill-pills">
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Git &amp; GitHub</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">Google Colab</span>
+          </div>
         </div>
       </div>
     </div>
