@@ -115,6 +115,11 @@
   .tag { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); }
   .tag.hl { border-color:rgba(200,241,53,0.3); color:var(--accent); background:rgba(200,241,53,0.04); }
 
+  .project-item.is-live { border-left:2px solid var(--accent2); background:linear-gradient(90deg, rgba(241,213,53,0.06), transparent 55%); padding-left:1.5rem; }
+  .project-item.is-live:hover { padding-left:1.8rem; }
+  .live-badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--ff-mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent2); margin-left:10px; vertical-align:middle; }
+  .live-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--accent2); animation:pulse 2s infinite; }
+
   #certs { border-top:1px solid var(--border); background:var(--bg2); }
   .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; margin-top:4rem; border:1px solid var(--border); }
   .cert-card { padding:2.5rem 2rem; background:var(--bg2); transition:background 0.3s; position:relative; overflow:hidden; }
@@ -299,16 +304,20 @@
           <span class="tag hl">NLP</span><span class="tag">Neural Network</span><span class="tag">TF-IDF</span><span class="tag">Keras</span>
         </div>
       </a>
-      <a href="https://github.com/mostfa-frg/PREPWISE" target="_blank" rel="noopener" class="project-item reveal reveal-delay-4" style="text-decoration:none;">
+      <div class="project-item is-live reveal reveal-delay-4" style="cursor:default;">
         <span class="project-num">005</span>
         <div class="project-info">
-          <div class="project-title">PrepWise — AI Interview Prep Agent</div>
+          <div class="project-title">PrepWise — AI Interview Prep Agent<span class="live-badge"><span class="dot"></span>Live</span></div>
           <div class="project-desc">Runs a personalized mock interview from your CV and a job description — retrieves relevant questions via FAISS, scores answers, asks smart follow-ups, and generates a readiness report</div>
+          <div style="margin-top:0.8rem; display:flex; gap:1.5rem;">
+            <a href="https://huggingface.co/spaces/MostafaFrg/prepwise" target="_blank" rel="noopener" style="color:var(--accent2); font-family:var(--ff-mono); font-size:11px; letter-spacing:0.08em; text-decoration:none; text-transform:uppercase;">▶ Live Demo</a>
+            <a href="https://github.com/mostfa-frg/PREPWISE" target="_blank" rel="noopener" style="color:var(--muted); font-family:var(--ff-mono); font-size:11px; letter-spacing:0.08em; text-decoration:none; text-transform:uppercase;">Code ↗</a>
+          </div>
         </div>
         <div class="project-tags">
           <span class="tag hl">LLM Agent</span><span class="tag">LangGraph</span><span class="tag">FAISS</span><span class="tag">Gradio</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
