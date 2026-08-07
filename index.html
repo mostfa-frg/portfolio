@@ -115,10 +115,16 @@
   .tag { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); }
   .tag.hl { border-color:rgba(200,241,53,0.3); color:var(--accent); background:rgba(200,241,53,0.04); }
 
-  .project-item.is-live { border-left:2px solid var(--accent2); background:linear-gradient(90deg, rgba(241,213,53,0.06), transparent 55%); padding-left:1.5rem; }
+  .project-item.is-live { border-left:2px solid var(--accent2); background:linear-gradient(90deg, rgba(241,213,53,0.06), transparent 55%); padding-left:1.5rem; cursor:pointer; }
   .project-item.is-live:hover { padding-left:1.8rem; }
   .live-badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--ff-mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent2); margin-left:10px; vertical-align:middle; }
   .live-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--accent2); animation:pulse 2s infinite; }
+  .project-links { display:flex; gap:1rem; margin-top:1.2rem; flex-wrap:wrap; }
+  .btn-live-demo, .btn-code { display:inline-flex; align-items:center; gap:10px; font-family:var(--ff-mono); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; padding:12px 24px; border-radius:3px; transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease; }
+  .btn-live-demo { background:var(--accent2); color:#080808; }
+  .btn-live-demo:hover { transform:translateY(-3px); box-shadow:0 10px 20px rgba(241,213,53,0.25); }
+  .btn-code { border:1px solid var(--muted); color:var(--text); }
+  .btn-code:hover { border-color:var(--text); background:rgba(255,255,255,0.08); transform:translateY(-3px); }
 
   #certs { border-top:1px solid var(--border); background:var(--bg2); }
   .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; margin-top:4rem; border:1px solid var(--border); }
@@ -304,14 +310,14 @@
           <span class="tag hl">NLP</span><span class="tag">Neural Network</span><span class="tag">TF-IDF</span><span class="tag">Keras</span>
         </div>
       </a>
-      <div class="project-item is-live reveal reveal-delay-4" style="cursor:default;">
+      <div class="project-item is-live reveal reveal-delay-4">
         <span class="project-num">005</span>
         <div class="project-info">
           <div class="project-title">PrepWise — AI Interview Prep Agent<span class="live-badge"><span class="dot"></span>Live</span></div>
           <div class="project-desc">Runs a personalized mock interview from your CV and a job description — retrieves relevant questions via FAISS, scores answers, asks smart follow-ups, and generates a readiness report</div>
-          <div style="margin-top:0.8rem; display:flex; gap:1.5rem;">
-            <a href="https://huggingface.co/spaces/MostafaFrg/prepwise" target="_blank" rel="noopener" style="color:var(--accent2); font-family:var(--ff-mono); font-size:11px; letter-spacing:0.08em; text-decoration:none; text-transform:uppercase;">▶ Live Demo</a>
-            <a href="https://github.com/mostfa-frg/PREPWISE" target="_blank" rel="noopener" style="color:var(--muted); font-family:var(--ff-mono); font-size:11px; letter-spacing:0.08em; text-decoration:none; text-transform:uppercase;">Code ↗</a>
+          <div class="project-links">
+            <a href="https://huggingface.co/spaces/MostafaFrg/prepwise" target="_blank" rel="noopener" class="btn-live-demo">▶ Live Demo</a>
+            <a href="https://github.com/mostfa-frg/PREPWISE" target="_blank" rel="noopener" class="btn-code"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
         <div class="project-tags">
@@ -523,6 +529,13 @@
 
   const barObs = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.transform=`scaleX(${b.dataset.w})`); barObs.unobserve(e.target); } }); },{threshold:0.2});
   document.querySelectorAll('.skills-split').forEach(el=>barObs.observe(el));
+
+  document.querySelectorAll('.project-item.is-live').forEach(item => {
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // let the Live Demo / Code buttons handle their own clicks
+      window.open('https://huggingface.co/spaces/MostafaFrg/prepwise', '_blank', 'noopener');
+    });
+  });
 </script>
 </body>
 </html>
