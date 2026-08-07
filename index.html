@@ -530,12 +530,7 @@
   const barObs = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.transform=`scaleX(${b.dataset.w})`); barObs.unobserve(e.target); } }); },{threshold:0.2});
   document.querySelectorAll('.skills-split').forEach(el=>barObs.observe(el));
 
-  document.querySelectorAll('.project-item.is-live').forEach(item => {
-    item.addEventListener('click', (e) => {
-      if (e.target.closest('a')) return; // let the Live Demo / Code buttons handle their own clicks
-      window.open('https://huggingface.co/spaces/MostafaFrg/prepwise', '_blank', 'noopener');
-    });
-  });
+ 
 </script>
 </body>
 </html>
