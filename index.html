@@ -114,7 +114,22 @@
   .project-tags { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
   .tag { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); }
   .tag.hl { border-color:rgba(200,241,53,0.3); color:var(--accent); background:rgba(200,241,53,0.04); }
+.project-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: rgba(200, 241, 53, 0.03);
+  transition: width 0.4s ease;
+  pointer-events: none;
+}
 
+.project-item > * {
+  position: relative;
+  z-index: 1;
+}
   .project-item.is-live { border-left:2px solid var(--accent2); background:linear-gradient(90deg, rgba(241,213,53,0.06), transparent 55%); padding-left:1.5rem; cursor:pointer; }
   .project-item.is-live:hover { padding-left:1.8rem; }
   .live-badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--ff-mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent2); margin-left:10px; vertical-align:middle; }
