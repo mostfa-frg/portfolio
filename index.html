@@ -21,9 +21,9 @@
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--text); font-family: var(--ff-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
-  .target-cursor-wrapper { position: fixed; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; z-index: 2147483647; mix-blend-mode: normal; transform: translate(-50%, -50%); opacity: 1; visibility: visible; display: block; will-change: transform; }
-  .target-cursor-dot { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; background: #c8f135; border-radius: 50%; transform: translate(-50%, -50%); will-change: transform; opacity: 1; visibility: visible; }
-  .target-cursor-corner { position: absolute; left: 50%; top: 50%; width: 12px; height: 12px; border: 3px solid #c8f135; will-change: transform; opacity: 1; visibility: visible; }
+  .target-cursor-wrapper { position: fixed; top: 0; left: 0; width: 0; height: 0; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transform: translate(-50%, -50%); }
+  .target-cursor-dot { position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); will-change: transform; }
+  .target-cursor-corner { position: absolute; left: 50%; top: 50%; width: 12px; height: 12px; border: 3px solid #fff; will-change: transform; }
   .corner-tl { transform: translate(-150%, -150%); border-right: none; border-bottom: none; }
   .corner-tr { transform: translate(50%, -150%); border-left: none; border-bottom: none; }
   .corner-br { transform: translate(50%, 50%); border-left: none; border-top: none; }
@@ -119,7 +119,22 @@
   .project-tags { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
   .tag { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); }
   .tag.hl { border-color:rgba(200,241,53,0.3); color:var(--accent); background:rgba(200,241,53,0.04); }
+.project-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: rgba(200, 241, 53, 0.03);
+  transition: width 0.4s ease;
+  pointer-events: none;
+}
 
+.project-item > * {
+  position: relative;
+  z-index: 1;
+}
   .project-item.is-live { border-left:2px solid var(--accent2); background:linear-gradient(90deg, rgba(241,213,53,0.06), transparent 55%); padding-left:1.5rem; cursor:pointer; }
   .project-item.is-live:hover { padding-left:1.8rem; }
   .live-badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--ff-mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent2); margin-left:10px; vertical-align:middle; }
@@ -588,17 +603,19 @@
       cursorColorOnTarget = '#f1d535'
     } = opts || {};
 
-    const hasFinePointer = window.matchMedia('(any-pointer: fine)').matches;
+    const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isSmallScreen = window.innerWidth <= 768;
+    const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+    const isMobileUA = mobileRegex.test((navigator.userAgent || navigator.vendor || '').toLowerCase());
+    const isMobile = (hasTouchScreen && isSmallScreen) || isMobileUA;
 
     const cursor = document.getElementById('targetCursor');
     const dot = document.getElementById('targetCursorDot');
-    if (!hasFinePointer || !cursor || typeof gsap === 'undefined') {
+    if (isMobile || !cursor || typeof gsap === 'undefined') {
       if (cursor) cursor.remove();
       return;
     }
 
-    cursor.style.display = 'block';
-    cursor.style.visibility = 'visible';
     if (hideDefaultCursor) document.body.style.cursor = 'none';
 
     const corners = cursor.querySelectorAll('.target-cursor-corner');
