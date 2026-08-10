@@ -19,7 +19,7 @@
     --ff-mono: 'DM Mono', monospace;
   }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--ff-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; cursor: none; }
+  body { background: var(--bg); color: var(--text); font-family: var(--ff-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
   .swarm-cursor-root { position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
   .swarm-cursor-root canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
@@ -144,12 +144,13 @@
   .skill-tag { background:var(--bg3); border:1px solid var(--border); color:var(--text); font-family:var(--ff-mono); font-size:12px; padding:7px 16px; letter-spacing:0.05em; transition:border-color 0.2s,color 0.2s,background 0.2s; }
   .skill-tag:hover { border-color:var(--accent); color:var(--accent); background:rgba(200,241,53,0.05); }
 
-  .skills-marquee { overflow:hidden; position:relative; margin:0 0 4rem; -webkit-mask-image:linear-gradient(to right, transparent, black 6%, black 94%, transparent); mask-image:linear-gradient(to right, transparent, black 6%, black 94%, transparent); }
+  .skills-marquee { overflow:hidden; position:relative; margin:6.5rem 0 4rem; -webkit-mask-image:linear-gradient(to right, transparent, black 6%, black 94%, transparent); mask-image:linear-gradient(to right, transparent, black 6%, black 94%, transparent); }
   .skills-marquee-track { display:flex; width:max-content; animation:marqueeScroll 30s linear infinite; }
   .skills-marquee:hover .skills-marquee-track { animation-play-state:paused; }
   .skills-marquee-group { display:flex; align-items:center; flex-shrink:0; }
   .marquee-item { display:inline-flex; align-items:center; gap:10px; font-family:var(--ff-mono); font-size:13px; letter-spacing:0.05em; color:var(--muted); white-space:nowrap; padding:0 1.75rem; border-right:1px solid var(--border); transition:color 0.25s; }
   .marquee-item i { font-size:16px; color:var(--accent); width:18px; text-align:center; }
+  .marquee-item img { width:18px; height:18px; object-fit:contain; opacity:0.85; }
   .skills-marquee:hover .marquee-item { color:var(--text); }
   @keyframes marqueeScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
@@ -390,19 +391,19 @@
     <div class="skills-marquee reveal">
       <div class="skills-marquee-track" id="skillsMarqueeTrack">
         <div class="skills-marquee-group">
-          <span class="marquee-item"><i class="fab fa-python"></i>Python</span>
-          <span class="marquee-item"><i class="fas fa-link"></i>LangChain</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/python/c8f135" alt="" loading="lazy">Python</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/langchain/c8f135" alt="" loading="lazy">LangChain</span>
           <span class="marquee-item"><i class="fas fa-diagram-project"></i>LangGraph</span>
-          <span class="marquee-item"><i class="fas fa-face-smile"></i>Hugging Face</span>
-          <span class="marquee-item"><i class="fas fa-magnifying-glass"></i>FAISS</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/huggingface/c8f135" alt="" loading="lazy">Hugging Face</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/meta/c8f135" alt="" loading="lazy">FAISS</span>
           <span class="marquee-item"><i class="fas fa-bolt"></i>Groq API</span>
-          <span class="marquee-item"><i class="fas fa-brain"></i>TensorFlow</span>
-          <span class="marquee-item"><i class="fas fa-chart-line"></i>Scikit-learn</span>
-          <span class="marquee-item"><i class="fas fa-stream"></i>Streamlit</span>
-          <span class="marquee-item"><i class="fas fa-sliders"></i>Gradio</span>
-          <span class="marquee-item"><i class="fas fa-feather"></i>FastAPI</span>
-          <span class="marquee-item"><i class="fab fa-github"></i>Git &amp; GitHub</span>
-          <span class="marquee-item"><i class="fas fa-eye"></i>OpenCV</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/tensorflow/c8f135" alt="" loading="lazy">TensorFlow</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/scikitlearn/c8f135" alt="" loading="lazy">Scikit-learn</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/streamlit/c8f135" alt="" loading="lazy">Streamlit</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/gradio/c8f135" alt="" loading="lazy">Gradio</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/fastapi/c8f135" alt="" loading="lazy">FastAPI</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/github/c8f135" alt="" loading="lazy">Git &amp; GitHub</span>
+          <span class="marquee-item"><img src="https://cdn.simpleicons.org/opencv/c8f135" alt="" loading="lazy">OpenCV</span>
           <span class="marquee-item"><i class="fas fa-database"></i>SQL</span>
         </div>
       </div>
@@ -671,6 +672,7 @@ function initSwarmCursor(container, opts) {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion || !container) return;
 
+  try {
   const renderer = new Renderer({ alpha: true, dpr: Math.min(window.devicePixelRatio || 1, 1.75) });
   const gl = renderer.gl;
   gl.clearColor(0, 0, 0, 0);
@@ -756,7 +758,7 @@ function initSwarmCursor(container, opts) {
     noiseY[i] = Math.random() * 260;
   }
 
-  const cursor = { x: cssW * 0.5, y: cssH * 0.5, has: false };
+  const cursor = { x: cssW * 0.5, y: cssH * 0.5, has: true };
   let burst = 0;
   let activeCount = Math.max(1, Math.min(MAX, Math.round(opts.count)));
 
@@ -919,21 +921,27 @@ function initSwarmCursor(container, opts) {
     renderer.render({ scene: compMesh });
   };
   requestAnimationFrame(frame);
+  document.body.style.cursor = 'none';
+  } catch (err) {
+    console.warn('SwarmCursor failed to initialize, using native cursor instead:', err);
+    if (container && container.parentNode) container.remove();
+    document.body.style.cursor = 'auto';
+  }
 }
 
 initSwarmCursor(document.getElementById('swarmCursorRoot'), {
   color: '#c8f135',
   accentColor: '#f1d535',
-  count: 14,
-  size: 7,
+  count: 6,
+  size: 2.5,
   merge: 0.77,
   glow: 0.8,
   opacity: 0.9,
-  spread: 90,
-  separation: 0.15,
+  spread: 55,
+  separation: 0.18,
   speed: 2.2,
   wander: 0.3,
-  trail: 0.7,
+  trail: 0.6,
   scatterOnClick: true
 });
 </script>
