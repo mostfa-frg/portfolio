@@ -116,6 +116,9 @@
   .project-num { font-family:var(--ff-mono); font-size:11px; letter-spacing:0.15em; color:var(--muted); }
   .project-title { font-family:var(--ff-display); font-size:1.6rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; transition:color 0.3s; }
   .project-item:hover .project-title { color:var(--accent); }
+  .project-title-row { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; margin-bottom:0.3rem; }
+  .project-title-row .project-title { margin-bottom:0; }
+  .project-github { flex-shrink:0; padding:8px 14px; font-size:11px; }
   .project-desc { font-size:13px; color:var(--muted); font-family:var(--ff-mono); }
   .project-tags { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
   .tag { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); }
@@ -342,11 +345,11 @@
       <div class="project-item cursor-target reveal reveal-delay-2">
         <span class="project-num">003</span>
         <div class="project-info">
-          <div class="project-title">Arabic Handwritten Document Assistant</div>
-          <div class="project-desc">End-to-end Arabic document intelligence app that detects handwritten text lines, performs Muharaf OCR, supports human review, and answers questions with hybrid retrieval</div>
-          <div class="project-links">
-            <a href="https://github.com/mostfa-frg/ITI-Pro/tree/main" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> GitHub</a>
+          <div class="project-title-row">
+            <div class="project-title">Arabic Handwritten Document Assistant</div>
+            <a href="https://github.com/mostfa-frg/ITI-Pro/tree/main" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
           </div>
+          <div class="project-desc">End-to-end Arabic document intelligence app that detects handwritten text lines, performs Muharaf OCR, supports human review, and answers questions with hybrid retrieval</div>
         </div>
         <div class="project-tags">
           <span class="tag hl">Arabic OCR</span><span class="tag">RAG</span><span class="tag">Kraken</span><span class="tag">ChromaDB</span><span class="tag">FastAPI</span>
@@ -355,11 +358,11 @@
       <div class="project-item cursor-target reveal reveal-delay-2">
         <span class="project-num">004</span>
         <div class="project-info">
-          <div class="project-title">Eye Open / Closed Detector</div>
-          <div class="project-desc">CNN trained on grayscale eye images to classify open vs closed — deployed as a Streamlit web app</div>
-          <div class="project-links">
-            <a href="https://github.com/mostfa-frg/eye-open-or-close" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> GitHub</a>
+          <div class="project-title-row">
+            <div class="project-title">Eye Open / Closed Detector</div>
+            <a href="https://github.com/mostfa-frg/eye-open-or-close" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
           </div>
+          <div class="project-desc">CNN trained on grayscale eye images to classify open vs closed — deployed as a Streamlit web app</div>
         </div>
         <div class="project-tags">
           <span class="tag hl">Computer Vision</span><span class="tag">CNN</span><span class="tag">OpenCV</span><span class="tag">Streamlit</span>
@@ -368,11 +371,11 @@
       <div class="project-item cursor-target reveal reveal-delay-3">
         <span class="project-num">005</span>
         <div class="project-info">
-          <div class="project-title">F1 Top 10 Predictor</div>
-          <div class="project-desc">Race finishing position classifier with EDA and feature engineering on historical data</div>
-          <div class="project-links">
-            <a href="https://github.com/mostfa-frg/F1-Top10-pred" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> GitHub</a>
+          <div class="project-title-row">
+            <div class="project-title">F1 Top 10 Predictor</div>
+            <a href="https://github.com/mostfa-frg/F1-Top10-pred" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
           </div>
+          <div class="project-desc">Race finishing position classifier with EDA and feature engineering on historical data</div>
         </div>
         <div class="project-tags">
           <span class="tag hl">Classification</span><span class="tag">XGBoost</span><span class="tag">Random Forest</span><span class="tag">EDA</span>
@@ -381,11 +384,11 @@
       <div class="project-item cursor-target reveal reveal-delay-4">
         <span class="project-num">006</span>
         <div class="project-info">
-          <div class="project-title">Laptop Price Predictor</div>
-          <div class="project-desc">End-to-end regression pipeline deployed as a live Streamlit web app</div>
-          <div class="project-links">
-            <a href="https://github.com/mostfa-frg/laptop-price-pred" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> GitHub</a>
+          <div class="project-title-row">
+            <div class="project-title">Laptop Price Predictor</div>
+            <a href="https://github.com/mostfa-frg/laptop-price-pred" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
           </div>
+          <div class="project-desc">End-to-end regression pipeline deployed as a live Streamlit web app</div>
         </div>
         <div class="project-tags">
           <span class="tag hl">Live App</span><span class="tag">Streamlit</span><span class="tag">XGBoost</span><span class="tag">MLOps</span>
@@ -394,11 +397,11 @@
       <div class="project-item cursor-target reveal">
         <span class="project-num">007</span>
         <div class="project-info">
-          <div class="project-title">Fake / Real News Classifier</div>
-          <div class="project-desc">Feedforward neural network with TF-IDF vectorization for NLP classification</div>
-          <div class="project-links">
-            <a href="https://github.com/mostfa-frg/Fake-News-Detector" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> GitHub</a>
+          <div class="project-title-row">
+            <div class="project-title">Fake / Real News Classifier</div>
+            <a href="https://github.com/mostfa-frg/Fake-News-Detector" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
           </div>
+          <div class="project-desc">Feedforward neural network with TF-IDF vectorization for NLP classification</div>
         </div>
         <div class="project-tags">
           <span class="tag hl">NLP</span><span class="tag">Neural Network</span><span class="tag">TF-IDF</span><span class="tag">Keras</span>
