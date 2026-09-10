@@ -118,7 +118,8 @@
   .project-item:hover .project-title { color:var(--accent); }
   .project-title-row { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; margin-bottom:0.3rem; }
   .project-title-row .project-title { margin-bottom:0; }
-  .project-github { flex-shrink:0; padding:8px 14px; font-size:11px; }
+  .project-github { flex-shrink:0; padding:8px 14px; font-size:10px; border-color:rgba(240,237,230,0.22); color:var(--muted); background:rgba(255,255,255,0.015); }
+  .project-github:hover { border-color:var(--accent); color:var(--accent); background:rgba(200,241,53,0.05); }
   .project-desc { font-size:13px; color:var(--muted); font-family:var(--ff-mono); }
   .project-tags { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
   .tag { font-family:var(--ff-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); }
@@ -203,6 +204,7 @@
     .about-left { position:static; }
     .projects-header { flex-direction:column; align-items:flex-start; }
     .project-item { grid-template-columns:50px 1fr; }
+    .project-title-row { align-items:flex-start; }
     .project-tags { display:none; }
     nav .nav-links { display:none; }
     .section-num { font-size: clamp(4rem, 20vw, 8rem); }
@@ -211,6 +213,8 @@
     .section-inner { padding:5rem 6vw; }
     .contact-big { font-size:clamp(2.5rem,12vw,5rem); }
     .contact-links { flex-direction: column; gap: 1.5rem; }
+    .project-title-row { gap:0.75rem; }
+    .project-github { padding:7px 11px; }
   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -321,7 +325,7 @@
           <div class="project-desc">Runs a personalized mock interview from your CV and a job description — retrieves relevant questions via FAISS, scores answers, asks smart follow-ups, and generates a readiness report</div>
           <div class="project-links">
             <a href="https://huggingface.co/spaces/MostafaFrg/prepwise" target="_blank" rel="noopener" class="btn-live-demo cursor-target">▶ Live Demo</a>
-            <a href="https://github.com/mostfa-frg/PREPWISE" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> Code</a>
+            <a href="https://github.com/mostfa-frg/PREPWISE" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
         </div>
         <div class="project-tags">
@@ -335,7 +339,7 @@
           <div class="project-desc">HVAC load optimization console with a built-in RAG assistant — built for the FortyGuard Temperature Hackathon, deployed on Azure App Service</div>
           <div class="project-links">
             <a href="https://coolload-app-2026-fortygraud-frghdehdb2cxdqc3.germanywestcentral-01.azurewebsites.net/" target="_blank" rel="noopener" class="btn-live-demo cursor-target">▶ Live Demo</a>
-            <a href="https://github.com/mostfa-frg/Coolload" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> Code</a>
+            <a href="https://github.com/mostfa-frg/Coolload" target="_blank" rel="noopener" class="btn-code cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
         </div>
         <div class="project-tags">
@@ -347,7 +351,7 @@
         <div class="project-info">
           <div class="project-title-row">
             <div class="project-title">Arabic Handwritten Document Assistant</div>
-            <a href="https://github.com/mostfa-frg/ITI-Pro/tree/main" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://github.com/mostfa-frg/ITI-Pro/tree/main" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
           <div class="project-desc">End-to-end Arabic document intelligence app that detects handwritten text lines, performs Muharaf OCR, supports human review, and answers questions with hybrid retrieval</div>
         </div>
@@ -360,7 +364,7 @@
         <div class="project-info">
           <div class="project-title-row">
             <div class="project-title">Eye Open / Closed Detector</div>
-            <a href="https://github.com/mostfa-frg/eye-open-or-close" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://github.com/mostfa-frg/eye-open-or-close" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
           <div class="project-desc">CNN trained on grayscale eye images to classify open vs closed — deployed as a Streamlit web app</div>
         </div>
@@ -373,7 +377,7 @@
         <div class="project-info">
           <div class="project-title-row">
             <div class="project-title">F1 Top 10 Predictor</div>
-            <a href="https://github.com/mostfa-frg/F1-Top10-pred" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://github.com/mostfa-frg/F1-Top10-pred" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
           <div class="project-desc">Race finishing position classifier with EDA and feature engineering on historical data</div>
         </div>
@@ -386,7 +390,7 @@
         <div class="project-info">
           <div class="project-title-row">
             <div class="project-title">Laptop Price Predictor</div>
-            <a href="https://github.com/mostfa-frg/laptop-price-pred" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://github.com/mostfa-frg/laptop-price-pred" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
           <div class="project-desc">End-to-end regression pipeline deployed as a live Streamlit web app</div>
         </div>
@@ -399,7 +403,7 @@
         <div class="project-info">
           <div class="project-title-row">
             <div class="project-title">Fake / Real News Classifier</div>
-            <a href="https://github.com/mostfa-frg/Fake-News-Detector" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://github.com/mostfa-frg/Fake-News-Detector" target="_blank" rel="noopener" class="btn-code project-github cursor-target"><i class="fab fa-github"></i> View Code</a>
           </div>
           <div class="project-desc">Feedforward neural network with TF-IDF vectorization for NLP classification</div>
         </div>
